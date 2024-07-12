@@ -8,6 +8,7 @@ from dotenv import load_dotenv,dotenv_values
 import os
 
 load_dotenv()
+TOKEN = '7410652636:AAG0WuFcJ3rR7GKnxW32tfmefto2TnE5a7Q'
 
 # Veritabanı bağlantısı
 conn = sqlite3.connect('haus.db')
@@ -119,7 +120,7 @@ async def reply_to_message(update: Update, context: CallbackContext):
 
 # Telegram botu oluşturma ve ayarlama
 def main() -> None:
-    application = ApplicationBuilder().token(os.getenv("TOKEN")).build()
+    application = ApplicationBuilder().token(TOKEN).build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, reply_to_message))
